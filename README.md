@@ -55,3 +55,24 @@ p<-manyStudies(Nsim=1000,
             b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model)
 sum(p<.05)/length(p) #power, not great!
 ```
+
+Going back to where we started, we can also invoke transformations of the outcome `y` that may need to be considered. For example, what if `y` is measured on a scale with a ceiling or a floor (i.e., y is censored)? We can conduct such an analysis via:
+```
+##floor, b3=0
+b1<-1
+b2<-1
+b3<-0
+rho<-.3
+N<-1000
+library(InteractionStudio)
+gammaToY<-gammaToY_options("linear")
+transformY<-function(y) {
+  y<-(y-mean(y,na.rm=TRUE))/sd(y,na.rm=TRUE)
+  ifelse(y< -2,-2,y)
+}
+model<-model_options("linear")
+p<-manyStudies(Nsim=1000,
+            b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model,
+	    transformY=transformY)
+sum(p<.05)/length(p) #false discovery, note that we have a real problem here!
+```
