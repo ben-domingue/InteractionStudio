@@ -2,8 +2,8 @@
 # InteractionStudio
 
 The basic workflow for a single `studyInteraction` is as follows:
-1. Input key simulation parameters (`b1,b2,b3,N,rho`).
-2. Use those parameters to generate `gamma`. 
+1. Input key simulation parameters (`b0,b1,b2,b3,N,rho`). 
+2. Use those parameters to generate `gamma`. Using N and rho, we first simulate predictors `x` and `z` that are each of length `N` and with a correlation of `rho`. We then set `gamma=b0+b1*x+b2*z+b3*x*z`. Simulation of the outcome will be based on `gamma` and ancillary parameters, `pars`.
 3. Use `gamma` to generate `y` based on the `gammaToY` function (see `GammaToY_options` but it's also straightforward to specify your own function). 
 4. [Optional] If requested, `y` is then transformed via `transformY`. 
 5. Estimate a simple interaction model based on `model` (see `model_options`). 
