@@ -1,0 +1,9 @@
+Package: InteractionStudio
+Title: Platform for analysis of statistical interactions via simulation.
+Version: 0.1
+Authors@R: person("Ben", "Domingue", email = "ben.domingue@gmail.com",
+                  role = c("aut", "cre"))
+Description: Power and FDR analysis of interaction studies.
+Depends: R (>= 3.1.0), MASS
+License:
+LazyData: true
