@@ -1,6 +1,12 @@
 ##
 # InteractionStudio
 
+This R package is meant to conduct analysis to guide statistical inference (via information about FDR and power) in study of interactions. Using a common set of data-generating parameters (those used to define `gamma` as described below), the package simulates data and estimates interaction models. These simulations are summarized via analysis of the p-value of the interaction terms. Crucially, the package allows users to specify:
+-a range of outcome variables,
+-transformations of those variables,
+-and different approaches for estimation.
+It is straightforward to write simple funtions for each of these and common choices for outcome variables and estimation models can be used via the `gammaToY_options` and `model_options` functions.
+
 The basic workflow for a single `studyInteraction` is as follows:
 1. Input key simulation parameters (`b0,b1,b2,b3,N,rho`). 
 2. Use those parameters to generate `gamma`. Using N and rho, we first simulate predictors `x` and `z` that are each of length `N` and with a correlation of `rho`. We then set `gamma=b0+b1*x+b2*z+b3*x*z`. Simulation of the outcome will be based on `gamma` and ancillary parameters, `pars`.
