@@ -7,6 +7,7 @@ The basic workflow for a single `studyInteraction` is as follows:
 3. Use `gamma` to generate `y` based on the `gammaToY` function (see `GammaToY_options` but it's also straightforward to specify your own function). 
 4. [Optional] If requested, `y` is then transformed via `transformY`. 
 5. Estimate a simple interaction model based on `model` (see `model_options`). 
+
 The `manyStudies` function is a wrapper that will perform many such simulation studies. 
 
 Let's look at an example based on simple linear regression:
