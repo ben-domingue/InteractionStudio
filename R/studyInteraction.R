@@ -1,5 +1,5 @@
 studyInteraction<-function(dummy.index,
-                           b1,b2,b3=0,rho=0.3,N=1000,
+                           b0=0,b1,b2,b3=0,rho=0.3,N=1000,
                            gammaToY,
                            model,
                            xz=NULL,
@@ -11,7 +11,7 @@ studyInteraction<-function(dummy.index,
     }
     x<-xz[,1]
     z<-xz[,2]
-    gamma<-b1*x+b2*z+b3*x*z
+    gamma<-b0+b1*x+b2*z+b3*x*z
     y<-gammaToY(gamma)
     if (!is.null(transformY)) y<-transformY(y)
     df<-data.frame(y=y,x=x,z=z)
