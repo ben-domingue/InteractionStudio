@@ -26,7 +26,7 @@ gammaToY<-gammaToY_options("linear")
 model<-model_options("linear")
 p<-manyStudies(Nsim=1000,
             b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model)
-sum(p<.05)/length(p) #false discovery, should be close to 0.05
+summaryOfStudies(p) #false discovery, should be close to 0.05
 ```
 Note that false discovery here is basically 0.05 which is as it should be given that this is the level of alpha. 
 
@@ -41,7 +41,7 @@ gammaToY<-gammaToY_options("logistic")
 model<-model_options("logistic")
 p<-manyStudies(Nsim=1000,
             b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model)
-sum(p<.05)/length(p) #power, should be close to 1
+summaryOfStudies(p) #power, should be close to unity
 ```
 Note that power is relatively good here given that b3 is relatively large. 
 
@@ -56,7 +56,7 @@ gammaToY<-gammaToY_options("ordinal")
 model<-model_options("logistic")
 p<-manyStudies(Nsim=1000,
             b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model)
-sum(p<.05)/length(p) #power, not great!
+summaryOfStudies(p) #power, not great!
 ```
 
 Going back to where we started, we can also invoke transformations of the outcome `y` that may need to be considered. For example, what if `y` is measured on a scale with a ceiling or a floor (i.e., y is censored)? We can conduct such an analysis via:
@@ -77,5 +77,5 @@ model<-model_options("linear")
 p<-manyStudies(Nsim=1000,
             b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model,
 	    transformY=transformY)
-sum(p<.05)/length(p) #false discovery, note that we have a real problem here!
+summaryOfStudies(p) #false discovery, note that we have a real problem here
 ```

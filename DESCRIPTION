@@ -7,3 +7,4 @@ Description: Power and FDR analysis of interaction studies.
 Depends: R (>= 3.1.0), MASS
 License:
 LazyData: true
+RoxygenNote: 7.1.1
