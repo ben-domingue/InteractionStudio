@@ -1,4 +1,4 @@
-studyInteraction<-function(dummy.index,
+studyInteraction<-function(dummy.index=NA,
                            b0=0,b1,b2,b3=0,rho=0.3,N=1000,
                            gammaToY,
                            model,

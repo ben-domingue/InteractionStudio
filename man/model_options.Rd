@@ -12,9 +12,9 @@ model_options(nm)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{nm}{
-%%     ~~Describe \code{nm} here~~
-}
+  \item{nm}{      %%     ~~Describe \code{nm} here~~
+  }
+  \item{print}{}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

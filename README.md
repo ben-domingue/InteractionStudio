@@ -79,3 +79,14 @@ p<-manyStudies(Nsim=1000,
 	    transformY=transformY)
 summaryOfStudies(p) #false discovery, note that we have a real problem here
 ```
+
+In an emprirical use case, it might not be immediately obvious what parameter values should be of interest. As a starting point, we suggest using `model` with a main-effects only `fm`. To do this for a model implemented in `model_options`, you can use the `print` flag as shown below.
+```
+x<-rnorm(1000)
+z<-rnorm(1000)
+y<-x+z+rnorm(length(x))
+library(InteractionStudio)
+model<-model_options("linear",print=TRUE)
+S<-model(data.frame(y=y,x=x,z=z),fm=as.formula(y~x+z))
+```
+In this case, simulation studies may want to focus on estimates from `S`.
