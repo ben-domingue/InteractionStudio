@@ -1,4 +1,9 @@
 export(
-	"studyInteraction","manyStudies","gammaToY_options","model_options","summaryOfStudies","myStudy"
+	"studyInteraction",
+	"manyStudies",
+	"gammaToY_options",
+	"model_options",
+	"summaryOfStudies",
+	"myStudy"
 )
 
