@@ -40,6 +40,10 @@ Function describing how to convert gamma to an outcome. See also \code{gammaToY_
   \item{model}{
 Function that describes an analysis and returns a p-value. See also \code{model_options}.
 }
+  \item{xz}{
+\code{N}x2 matrix of predictors that will be resampled. If \code{xz} is
+passed, \code{N} and \code{rho} are ignored.
+}
   \item{sim_xz}{
 Function that generates \code{xz} based on \code{N} and \code{rho}.
 }
