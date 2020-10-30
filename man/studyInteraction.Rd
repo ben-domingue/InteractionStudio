@@ -40,8 +40,8 @@ Function describing how to convert gamma to an outcome. See also \code{gammaToY_
   \item{model}{
 Function that describes an analysis and returns a p-value. See also \code{model_options}.
 }
-  \item{xz}{
-Nx2 data matrix. If passed, \code{N} and \code{rho} are ignored.
+  \item{sim_xz}{
+Function that generates \code{xz} based on \code{N} and \code{rho}.
 }
   \item{transformY}{
 Optional means of transforming outcome.

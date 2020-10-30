@@ -90,3 +90,31 @@ model<-model_options("linear",print=TRUE)
 S<-model(data.frame(y=y,x=x,z=z),fm=as.formula(y~x+z))
 ```
 In this case, simulation studies may want to focus on estimates from `S`.
+
+Oftentimes, interest resides in one continuous and one dichotomous predictor. Users can study such settings by directly passing a function to simulate such data via `sim_xz`. An example:
+```
+b1<-1
+b2<-1
+b3<-.05
+rho<-.3
+N<-1000
+library(InteractionStudio)
+gammaToY<-gammaToY_options("linear")
+model<-model_options("linear")
+sim_xz<-function(N,rho) {
+  library(MASS)
+  xz<-mvrnorm(N,mu=c(0,0),Sigma=matrix(c(1,rho,rho,1),2,2))
+  xz[,2]<-ifelse(xz[,2]>0,1,0)
+  xz
+}
+p<-manyStudies(Nsim=1000,
+            b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model,
+	    sim_xz=sim_xz
+	    )
+summaryOfStudies(p) #false discovery, should be close to 0.05
+#power substantially reduced compared to
+p<-manyStudies(Nsim=1000,
+            b1=b1,b2=b2,b3=b3,rho=rho,gammaToY=gammaToY,model=model
+	    #sim_xz=sim_xz #xz will be multivariate normal
+	    )
+summaryOfStudies(p) #false discovery, should be close to 0.05
